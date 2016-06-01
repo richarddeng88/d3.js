@@ -52,7 +52,7 @@
 						.attr("fill",function(d){return color(d)})
 						.attr('y',function(d,i){return i*40});
 
-		canvas.append("g").attr("transform","translate(0,300)").call(axis);
+		var axis = canvas.append("g").attr("transform","translate(0,300)").call(axis);
 
 	</script>
 
