@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> D3 tutorial</title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+
+</head>
+<body>
+	<script >
+			var df1 = [1,2,3,4,5,6];
+
+			var canvas = d3.select("body")
+						.append("svg").attr("width",500).attr("height",500);
+
+			// here var pre, pre2, circle are DOM elements. Above df1 is data elements. 
+			// if DOM elements > data elements, the circle element will not be shown. 
+			var pre = canvas.append("circle").attr("cx",100).attr("cy",50).attr("r",15);
+			var pre2 = canvas.append("circle").attr("cx",150).attr("cy",150).attr("r",35);
+
+			// here i guess it's because selectAll, we are binding all DOM elements with data elements. 
+			// see we have three options. enter / update / exit. 
+			var circle = canvas.selectAll("circle")
+						.data(df1).attr("fill","red")
+						.enter()
+							.append("circle").attr("fill","green").attr("cx",50).attr("cy",50).attr("r",25);
+
+
+			// let's learn transition now. move the circle to right. 
+			pre.transition().duration(3500).delay(1000).attr("cx", 450).attr("cy",400)
+					.each("start",function(){d3.select(this).attr("fill","green")})
+				.transition().attr("cx",50)
+					.each("start",function(){d3.select(this).attr("fill","yellow")})
+				.transition().attr("cy",30).attr("cx",340)
+					.each("start",function(){d3.select(this).attr("fill","blue")})
+
+
+
+	</script>
+
+</body>
+</html>
